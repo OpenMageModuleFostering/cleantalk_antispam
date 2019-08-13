@@ -189,7 +189,7 @@ class Cleantalk_Antispam_Model_Observer
     		$dt=Array(
 		    'auth_key'=>$_POST['cleantalk_authkey'],
 		    'method_name' => 'send_feedback',
-		    'feedback' => 0 . ':' . 'magento-121');
+		    'feedback' => 0 . ':' . 'magento-122');
 		$result=sendRawRequest($url,$dt,true);
 		return $result;
 	}
