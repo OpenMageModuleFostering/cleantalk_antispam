@@ -7,6 +7,19 @@ class Cleantalk_Antispam_Model_Api extends Mage_Core_Model_Abstract
     {
         $this->_init('antispam/api');
     }
+    
+    /**
+     * Universal method for error message
+     * @return error template
+     */
+     
+     static function CleantalkDie($message)
+	{
+		$error_tpl=file_get_contents(dirname(__FILE__)."/error.html");
+		print str_replace('%ERROR_TEXT%',$message,$error_tpl);
+		die();
+	}
+     
 
     /**
      * Universal method for page addon
@@ -101,7 +114,7 @@ ctSetCookie("%s", "%s");
         $ct_request->sender_email = isset($arEntity['sender_email']) ? $arEntity['sender_email'] : '';
         $ct_request->sender_nickname = isset($arEntity['sender_nickname']) ? $arEntity['sender_nickname'] : '';
         $ct_request->sender_ip = isset($arEntity['sender_ip']) ? $arEntity['sender_ip'] : $sender_ip;
-        $ct_request->agent = 'magento-100';
+        $ct_request->agent = 'magento-120';
         $ct_request->js_on = $checkjs;
         $ct_request->sender_info = $sender_info;
 

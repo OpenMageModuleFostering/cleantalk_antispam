@@ -1,17 +1,7 @@
 <layout version="0.1.0">
-    <customer_account_create>
-        <reference name="content">
-	    <block type="antispam/antispam" name="account_create" template="cleantalk/antispam/page_addon.phtml" />
+    <default>
+        <reference name="footer">
+            <block type="antispam/antispam" name="review_product_list" template="cleantalk/antispam/page_addon.phtml" />
         </reference>
-    </customer_account_create>
-    <contacts_index_index>
-        <reference name="content">
-	    <block type="antispam/antispam" name="index_index" template="cleantalk/antispam/page_addon.phtml" />
-        </reference>
-    </contacts_index_index>
-    <review_product_list>
-        <reference name="content">
-	    <block type="antispam/antispam" name="review_product_list" template="cleantalk/antispam/page_addon.phtml" />
-        </reference>
-    </review_product_list>
+    </default>
 </layout>

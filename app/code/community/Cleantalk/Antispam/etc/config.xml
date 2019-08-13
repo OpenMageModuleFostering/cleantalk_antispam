@@ -1,9 +1,12 @@
  <config>
     <modules>
         <Cleantalk_Antispam>
-            <version>1.0.0</version>
+            <version>1.2.0</version>
         </Cleantalk_Antispam>
     </modules>
+    <adminhtml>
+
+    </adminhtml>
 
     <global>
 	<rewrite>
@@ -57,6 +60,26 @@
                 <class>Cleantalk_Antispam_Block</class>
             </antispam>
         </blocks>
+    <events>
+    		<controller_front_init_before>
+				<observers>
+					<antispam>
+						<type>singleton</type>
+						<class>antispam/observer</class>
+						<method>interceptQuery</method>
+					</antispam>
+				</observers>
+    		</controller_front_init_before>
+    		<core_block_abstract_to_html_after>
+				<observers>
+					<antispam>
+						<type>singleton</type>
+						<class>antispam/observer</class>
+						<method>interceptOutput</method>
+					</antispam>
+				</observers>
+    		</core_block_abstract_to_html_after>
+    </events>
 
     </global>
 
@@ -70,13 +93,6 @@
         	</args>
     	    </antispam>
 	</routers>
-        <layout>
-            <updates>
-                <antispam>
-                    <file>antispam.xml</file>
-                </antispam>
-            </updates>
-        </layout>
     </frontend>
 
 </config>
