@@ -95,8 +95,9 @@ ctSetCookie("%s", "%s");
             'USER_AGENT' => $user_agent
         );
         $sender_info = json_encode($sender_info);
-
-        require_once 'lib/cleantalk.class.php';
+        if (file_exists('lib/cleantalk.class.php'))
+            require_once 'lib/cleantalk.class.php';
+        else require_once 'includes/src/Cleantalk_Antispam_Model_lib_cleantalk.class.php';
         
         $ct = new Cleantalk();
         $ct->work_url = $ct_ws['work_url'];
@@ -114,7 +115,7 @@ ctSetCookie("%s", "%s");
         $ct_request->sender_email = isset($arEntity['sender_email']) ? $arEntity['sender_email'] : '';
         $ct_request->sender_nickname = isset($arEntity['sender_nickname']) ? $arEntity['sender_nickname'] : '';
         $ct_request->sender_ip = isset($arEntity['sender_ip']) ? $arEntity['sender_ip'] : $sender_ip;
-        $ct_request->agent = 'magento-122';
+        $ct_request->agent = 'magento-123';
         $ct_request->js_on = $checkjs;
         $ct_request->sender_info = $sender_info;
 

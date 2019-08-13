@@ -52,7 +52,9 @@ class Cleantalk_Antispam_Model_Observer
 			Mage::getSingleton('core/session', array('name'=>'adminhtml'));
 			if(Mage::getSingleton('admin/session')->isLoggedIn())
 			{
-				require_once 'lib/cleantalk.class.php';
+			if (file_exists('lib/cleantalk.class.php'))
+            	require_once 'lib/cleantalk.class.php';
+       		 else require_once 'includes/src/Cleantalk_Antispam_Model_lib_cleantalk.class.php';
 				$admin_email=Mage::getStoreConfig('trans_email/ident_general/email');
 				$site=$_SERVER['HTTP_HOST'];
 				$result = getAutoKey($admin_email,$site,'magento');
@@ -104,7 +106,9 @@ class Cleantalk_Antispam_Model_Observer
 				$new_status=$last_status;
 	    		if($new_checked-$last_checked>3600)
 	    		{
-	    			require_once 'lib/cleantalk.class.php';
+	    			if (file_exists('lib/cleantalk.class.php'))
+            			require_once 'lib/cleantalk.class.php';
+       				else require_once 'includes/src/Cleantalk_Antispam_Model_lib_cleantalk.class.php';
 	    			$url = 'https://api.cleantalk.org';
 		    		$dt=Array(
 		    			'auth_key'=>$key,
@@ -184,12 +188,14 @@ class Cleantalk_Antispam_Model_Observer
 	*/
 	public function CleantalkTestMessage($key)
 	{
-		require_once 'lib/cleantalk.class.php';
+		if (file_exists('lib/cleantalk.class.php'))
+            require_once 'lib/cleantalk.class.php';
+        else require_once 'includes/src/Cleantalk_Antispam_Model_lib_cleantalk.class.php';
     		$url = 'http://moderate.cleantalk.org/api2.0';
     		$dt=Array(
 		    'auth_key'=>$_POST['cleantalk_authkey'],
 		    'method_name' => 'send_feedback',
-		    'feedback' => 0 . ':' . 'magento-122');
+		    'feedback' => 0 . ':' . 'magento-123');
 		$result=sendRawRequest($url,$dt,true);
 		return $result;
 	}
