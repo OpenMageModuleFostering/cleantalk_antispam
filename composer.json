@@ -1,16 +1,19 @@
 {
-    "name": "OpenMageModuleFostering/Cleantalk_Antispam",
+    "name": "OpenMageModuleFostering\/Cleantalk_Antispam",
     "type": "magento-module",
     "license": "GPL",
     "homepage": "",
     "description": "Cloud, CAPTCHA free, premium antispam for Magento.",
     "authors": [
-    {
-        "name": "CleanTalk.Org",
-        "email": "welcome@cleantalk.org"
-    }
-],
+        {
+            "name": "CleanTalk.Org",
+            "email": "welcome@cleantalk.org"
+        }
+    ],
     "suggest": {
-        "magento-hackathon/magento-composer-installer": "*"
-    }
+        "magento-hackathon\/magento-composer-installer": "*"
+    },
+    "keywords": [
+        "openmage-module"
+    ]
 }
